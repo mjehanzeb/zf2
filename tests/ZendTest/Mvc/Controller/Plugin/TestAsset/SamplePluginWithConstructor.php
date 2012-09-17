@@ -5,22 +5,24 @@
  * @link      http://github.com/zendframework/zf2 for the canonical source repository
  * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
- * @package   Zend_Log
+ * @package   Zend_Mvc
  */
 
-namespace ZendTest\Log\TestAsset;
+namespace ZendTest\Mvc\Controller\Plugin\TestAsset;
 
-use Zend\Log\Writer\Syslog as SyslogWriter;
+use Zend\Mvc\Controller\Plugin\AbstractPlugin;
 
-class CustomSyslogWriter extends SyslogWriter
+class SamplePluginWithConstructor extends AbstractPlugin
 {
-    public function getFacility()
+    protected $bar;
+
+    public function __construct($bar = 'baz')
     {
-        return $this->facility;
+        $this->bar = $bar;
     }
 
-    public function getApplicationName()
+    public function getBar()
     {
-        return $this->appName;
+        return $this->bar;
     }
 }
